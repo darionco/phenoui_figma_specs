@@ -1,0 +1,8 @@
+{
+  "type": "WorldSelectPath",
+  "mappings": {
+    "type": "!mindora-world-select-path",
+    "child": "@Frame"
+  },
+  "userData": null
+}

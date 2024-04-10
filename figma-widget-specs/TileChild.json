@@ -1,0 +1,22 @@
+{
+  "type": "TileChild",
+  "mappings": {
+    "type": "!figma-tile-child",
+    "child": "$children[0]",
+    "dimensions": "@_dimensions",
+    "parentLayout": "@_parentLayout",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": {
+    "vertical": {
+      "type": "boolean",
+      "default": true,
+      "description": "Tile the child vertically"
+    },
+    "horizontal": {
+      "type": "boolean",
+      "default": true,
+      "description": "Tile the child horizontally"
+    }
+  }
+}

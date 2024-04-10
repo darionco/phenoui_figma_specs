@@ -1,0 +1,8 @@
+{
+  "type": "WorldSelectBackground",
+  "mappings": {
+    "type": "!mindora-world-select-background",
+    "children": "$children"
+  },
+  "userData": null
+}

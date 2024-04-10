@@ -1,0 +1,21 @@
+{
+  "type": "TextField",
+  "mappings": [
+    "@Text",
+    {
+      "isTextField": true
+    }
+  ],
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": null,
+      "description": "id to use in forms"
+    },
+    "isPasswordField": {
+      "type": "boolean",
+      "default": false,
+      "description": "is password"
+    }
+  }
+}

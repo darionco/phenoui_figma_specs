@@ -1,0 +1,30 @@
+{
+  "type": "_style",
+  "mappings": {
+    "color": {
+      "b": "#fills[0].color.b",
+      "g": "#fills[0].color.g",
+      "o": "#fills[0].opacity",
+      "r": "#fills[0].color.r"
+    },
+    "border": {
+      "type": "#strokes[0].type",
+      "color": {
+        "b": "#strokes[0].color.b",
+        "g": "#strokes[0].color.g",
+        "o": "#strokes[0].opacity",
+        "r": "#strokes[0].color.r"
+      },
+      "width": "#strokeWeight",
+      "radius": {
+        "bl": "#bottomLeftRadius",
+        "br": "#bottomRightRadius",
+        "tl": "#topLeftRadius",
+        "tr": "#topRightRadius"
+      }
+    },
+    "opacity": "#opacity",
+    "blendMode": "#blendMode"
+  },
+  "userData": null
+}

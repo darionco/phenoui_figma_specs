@@ -1,0 +1,68 @@
+{
+  "type": "ImageJPEG",
+  "mappings": {
+    "data": "%exportJPEG($)",
+    "type": "!figma-image",
+    "format": "!jpeg",
+    "opacity": "#opacity",
+    "dimensions": "@_dimensions",
+    "parentLayout": "@_parentLayout",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": {
+    "method": {
+      "type": "select",
+      "default": "upload",
+      "options": [
+        {
+          "label": "Upload to server",
+          "value": "upload"
+        },
+        {
+          "label": "Link existing image",
+          "value": "link"
+        },
+        {
+          "label": "Embed image in export",
+          "value": "embed"
+        }
+      ],
+      "description": "Should the image be uploaded or embedded"
+    },
+    "scaling": {
+      "type": "select",
+      "default": "none",
+      "options": [
+        {
+          "label": "Clipping",
+          "value": "none"
+        },
+        {
+          "label": "Scale Down",
+          "value": "scaleDown"
+        },
+        {
+          "label": "Fill & Squeeze",
+          "value": "fill"
+        },
+        {
+          "label": "Fill & Resize",
+          "value": "contain"
+        },
+        {
+          "label": "Scale to Cover",
+          "value": "cover"
+        },
+        {
+          "label": "Fill Width",
+          "value": "fitWidth"
+        },
+        {
+          "label": "Fill Height",
+          "value": "fitHeight"
+        }
+      ],
+      "description": "Controls the method used to scale the image within its container"
+    }
+  }
+}

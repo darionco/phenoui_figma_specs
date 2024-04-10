@@ -1,0 +1,8 @@
+{
+  "type": "WorldSelectList",
+  "mappings": {
+    "type": "!mindora-world-select-list",
+    "children": "$children"
+  },
+  "userData": null
+}

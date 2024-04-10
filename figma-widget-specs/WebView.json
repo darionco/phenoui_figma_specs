@@ -1,0 +1,22 @@
+{
+  "type": "WebView",
+  "mappings": {
+    "type": "!figma-web-view",
+    "style": "@_style",
+    "dimensions": "@_dimensions",
+    "parentLayout": "@_parentLayout",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": {
+    "URL": {
+      "type": "string",
+      "default": "",
+      "description": "The URL to load in the web view"
+    },
+    "local": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set to `true` when the URL is a path to a local file"
+    }
+  }
+}

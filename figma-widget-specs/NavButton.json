@@ -1,0 +1,58 @@
+{
+  "type": "NavButton",
+  "mappings": {
+    "type": "!figma-nav-button",
+    "child": "@Frame"
+  },
+  "userData": {
+    "data": {
+      "type": "group",
+      "default": null,
+      "description": "Data to forward to the screen. If `Pop Sceen` is selected, this data will be returned to the previous screen (this takes precedence over `target`)"
+    },
+    "action": {
+      "type": "select",
+      "default": "pop",
+      "options": [
+        {
+          "label": "Pop Screen",
+          "value": "pop"
+        },
+        {
+          "label": "Push Screen",
+          "value": "push"
+        },
+        {
+          "label": "Replace Current Screen",
+          "value": "replace"
+        }
+      ],
+      "description": "What navigation action to take when pressed"
+    },
+    "target": {
+      "type": "string",
+      "default": "",
+      "description": "The name of the screen used to perform the action. If `Pop Screen` is selected, this data will be returned to the previous screen."
+    },
+    "screenType": {
+      "type": "select",
+      "default": "screen",
+      "options": [
+        {
+          "label": "Screen",
+          "value": "screen"
+        },
+        {
+          "label": "Popup",
+          "value": "popup"
+        }
+      ],
+      "description": "The type of screen this navigation action will operate on"
+    },
+    "transition": {
+      "type": "string",
+      "default": null,
+      "description": "The name of the transition animation to use for this action. If not provided, the default animation is used. If `Pop Screen` is selected, this field has no effect."
+    }
+  }
+}

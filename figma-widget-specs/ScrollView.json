@@ -1,0 +1,9 @@
+{
+  "type": "ScrollView",
+  "mappings": {
+    "type": "!scrollView",
+    "child": "$children[0]",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": null
+}

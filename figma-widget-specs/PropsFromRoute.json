@@ -1,0 +1,14 @@
+{
+  "type": "PropsFromRoute",
+  "mappings": {
+    "type": "!figma-props-from-route",
+    "child": "%nodeAsType($, %nativeType($))"
+  },
+  "userData": {
+    "props": {
+      "type": "group",
+      "default": null,
+      "description": "Properties to read from the route data"
+    }
+  }
+}

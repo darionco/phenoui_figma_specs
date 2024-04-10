@@ -1,0 +1,12 @@
+{
+  "type": "FigmaComponent",
+  "mappings": {
+    "type": "!figma-component",
+    "variants": {
+      "default": "@Frame"
+    },
+    "componentType": "%nativeType($)",
+    "defaultVariant": "!default"
+  },
+  "userData": null
+}

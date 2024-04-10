@@ -1,0 +1,16 @@
+{
+  "type": "TextFromRoute",
+  "mappings": [
+    "@Text",
+    {
+      "type": "!figma-text-from-route"
+    }
+  ],
+  "userData": {
+    "key": {
+      "type": "string",
+      "default": null,
+      "description": "They key, in the route's data object, from which to get the text to display"
+    }
+  }
+}

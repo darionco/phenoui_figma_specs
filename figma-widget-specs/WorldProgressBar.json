@@ -1,0 +1,8 @@
+{
+  "type": "WorldProgressBar",
+  "mappings": {
+    "type": "!mindora-world-progress-bar",
+    "widgetType": "%nativeType($)"
+  },
+  "userData": null
+}

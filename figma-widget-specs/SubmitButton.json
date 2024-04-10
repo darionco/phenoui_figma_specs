@@ -1,0 +1,25 @@
+{
+  "type": "SubmitButton",
+  "mappings": {
+    "type": "!figma-submit-button",
+    "child": "@Frame"
+  },
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": null,
+      "description": "id to use in forms"
+    },
+    "context": {
+      "type": "group",
+      "default": [
+        {
+          "type": "string",
+          "default": "submit",
+          "description": "action"
+        }
+      ],
+      "description": "Context data sent to the receiving form"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "Frame",
+  "mappings": {
+    "type": "!figma-frame",
+    "style": "@_style",
+    "layout": {
+      "self": "@_layout",
+      "parent": "@_parentLayout"
+    },
+    "children": "$children",
+    "dimensions": "@_dimensions",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": null
+}

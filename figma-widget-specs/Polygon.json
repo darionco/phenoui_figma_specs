@@ -1,0 +1,50 @@
+{
+  "type": "Polygon",
+  "mappings": {
+    "data": "%exportSVG($)",
+    "type": "!figma-image",
+    "format": "!svg",
+    "opacity": "#opacity",
+    "dimensions": "@_dimensions",
+    "parentLayout": "@_parentLayout",
+    "uploadMethod": "!embed",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": {
+    "scaling": {
+      "type": "select",
+      "default": "contain",
+      "options": [
+        {
+          "label": "Clipping",
+          "value": "none"
+        },
+        {
+          "label": "Scale Down",
+          "value": "scaleDown"
+        },
+        {
+          "label": "Fill & Squeeze",
+          "value": "fill"
+        },
+        {
+          "label": "Fill & Resize",
+          "value": "contain"
+        },
+        {
+          "label": "Scale to Cover",
+          "value": "cover"
+        },
+        {
+          "label": "Fill Width",
+          "value": "fitWidth"
+        },
+        {
+          "label": "Fill Height",
+          "value": "fitHeight"
+        }
+      ],
+      "description": "Controls the method used to scale the image within its container"
+    }
+  }
+}

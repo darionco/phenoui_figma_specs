@@ -1,0 +1,10 @@
+{
+  "type": "FigmaComponentInstance",
+  "mappings": {
+    "type": "!figma-component-instance",
+    "dimensions": "@_dimensions",
+    "widgetType": "%nativeType($)",
+    "parentLayout": "@_parentLayout"
+  },
+  "userData": null
+}

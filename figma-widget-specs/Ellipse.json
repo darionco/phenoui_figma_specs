@@ -1,0 +1,10 @@
+{
+  "type": "Ellipse",
+  "mappings": {
+    "type": "!figma_ellipse",
+    "style": "@_style",
+    "dimensions": "@_dimensions",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": null
+}
