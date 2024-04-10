@@ -30,7 +30,7 @@
           "value": "embed"
         }
       ],
-      "description": "Should the image be uploaded or embedded"
+      "description": "Should the image be uploaded, linked or embedded"
     },
     "autoplay": {
       "type": "boolean",
