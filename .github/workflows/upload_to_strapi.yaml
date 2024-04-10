@@ -1,0 +1,53 @@
+name: "Upload to Strapi"
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+  strapi:
+    name: "Upload to Strapi"
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Define Environment Variables
+        run: |
+          if [[ "${{github.event_name}}" != "pull_request" ]]; then
+            echo "GIT_BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+          fi
+          if [[ "${{github.event_name}}" == "pull_request" ]]; then
+            echo "GIT_BRANCH=$(echo ${GITHUB_BASE_REF} | tr / -)" >> $GITHUB_ENV
+          fi
+          
+          if [[ "${{github.base_ref}}" == "main" || "${{github.ref}}" == "refs/heads/main" ]]; then
+            echo "TARGET_ENV=PRODUCT" >> $GITHUB_ENV
+          fi
+          if [[ "${{github.base_ref}}" == "staging" || "${{github.ref}}" == "refs/heads/staging" ]]; then
+            echo "TARGET_ENV=STAGING" >> $GITHUB_ENV
+          fi
+          if [[ "${{github.base_ref}}" == "develop" || "${{github.ref}}" == "refs/heads/develop" ]]; then
+            echo "TARGET_ENV=DEVELOP" >> $GITHUB_ENV
+          fi
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Run upload script
+        run: |
+          deno run -A ./_tools/uploadSpecs.js --url=${{ vars[format('STRAPI_URL_{0}', env.TARGET_ENV)] }} --key=${{ secrets[format('STRAPI_TOKEN_{0}', env.TARGET_ENV)] }}
