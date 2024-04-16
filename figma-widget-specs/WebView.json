@@ -4,7 +4,6 @@
     "type": "!figma-web-view",
     "style": "@_style",
     "dimensions": "@_dimensions",
-    "parentLayout": "@_parentLayout",
     "componentRefs": "#componentPropertyReferences"
   },
   "userData": {

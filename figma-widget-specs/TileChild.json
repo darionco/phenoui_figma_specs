@@ -4,7 +4,6 @@
     "type": "!figma-tile-child",
     "child": "$children[0]",
     "dimensions": "@_dimensions",
-    "parentLayout": "@_parentLayout",
     "componentRefs": "#componentPropertyReferences"
   },
   "userData": {

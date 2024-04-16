@@ -3,8 +3,7 @@
   "mappings": {
     "type": "!figma-component-instance",
     "dimensions": "@_dimensions",
-    "widgetType": "%nativeType($)",
-    "parentLayout": "@_parentLayout"
+    "widgetType": "%nativeType($)"
   },
   "userData": null
 }

@@ -3,10 +3,7 @@
   "mappings": {
     "type": "!figma-frame",
     "style": "@_style",
-    "layout": {
-      "self": "@_layout",
-      "parent": "@_parentLayout"
-    },
+    "layout": "@_layout",
     "children": "$children",
     "dimensions": "@_dimensions",
     "componentRefs": "#componentPropertyReferences"

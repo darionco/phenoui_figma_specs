@@ -4,7 +4,6 @@
     "type": "!figma-lottie-animation",
     "opacity": "#opacity",
     "dimensions": "@_dimensions",
-    "parentLayout": "@_parentLayout",
     "componentRefs": "#componentPropertyReferences"
   },
   "userData": {
