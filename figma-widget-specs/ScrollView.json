@@ -1,8 +1,9 @@
 {
   "type": "ScrollView",
   "mappings": {
-    "type": "!scrollView",
+    "type": "!figma-scroll-view",
     "child": "$children[0]",
+    "dimensions": "@_dimensions",
     "componentRefs": "#componentPropertyReferences"
   },
   "userData": null
