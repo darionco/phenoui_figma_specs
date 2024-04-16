@@ -1,12 +1,10 @@
 {
   "type": "SafeArea",
-  "mappings": {
-    "type": "!figma-safe-area",
-    "child": "@Frame",
-    "child.dimensions.parent.x": null,
-    "child.dimensions.parent.y": null,
-    "child.dimensions.parent.width": null,
-    "child.dimensions.parent.height": null
-  },
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-safe-area"
+    }
+  ],
   "userData": null
 }
