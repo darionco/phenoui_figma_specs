@@ -1,31 +1,23 @@
 {
   "type": "_dimensions",
   "mappings": {
-    "self": {
-      "x": "#x",
-      "y": "#y",
-      "max": {
-        "width": "#maxWidth",
-        "height": "#maxHeight"
-      },
-      "min": {
-        "width": "#minWidth",
-        "height": "#minHeight"
-      },
-      "width": "#width",
-      "height": "#height",
-      "rotation": "#rotation",
-      "widthMode": "#layoutSizingHorizontal",
-      "heightMode": "#layoutSizingVertical",
-      "constraints": "#constraints",
-      "positioning": "#layoutPositioning"
+    "x": "#x",
+    "y": "#y",
+    "max": {
+      "width": "#maxWidth",
+      "height": "#maxHeight"
     },
-    "parent": {
-      "x": "#parent.x",
-      "y": "#parent.y",
-      "width": "#parent.width",
-      "height": "#parent.height"
-    }
+    "min": {
+      "width": "#minWidth",
+      "height": "#minHeight"
+    },
+    "width": "#width",
+    "height": "#height",
+    "rotation": "#rotation",
+    "widthMode": "#layoutSizingHorizontal",
+    "heightMode": "#layoutSizingVertical",
+    "constraints": "#constraints",
+    "positioning": "#layoutPositioning"
   },
   "userData": null
 }
