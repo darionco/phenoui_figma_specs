@@ -1,9 +1,11 @@
 {
   "type": "Form",
-  "mappings": {
-    "type": "!figma-form",
-    "child": "@Frame"
-  },
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-form"
+    }
+  ],
   "userData": {
     "data": {
       "type": "group",
