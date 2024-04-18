@@ -1,9 +1,12 @@
 {
   "type": "PropsFromRoute",
-  "mappings": {
-    "type": "!figma-props-from-route",
-    "child": "%nodeAsType($, %nativeType($))"
-  },
+  "mappings": [
+    "@FigmaComponentInstance",
+    {
+      "type": "!figma-props-from-route",
+      "widgetType": "%nativeType($)"
+    }
+  ],
   "userData": {
     "props": {
       "type": "group",

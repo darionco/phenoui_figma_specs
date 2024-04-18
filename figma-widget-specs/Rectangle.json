@@ -1,10 +1,9 @@
 {
   "type": "Rectangle",
   "mappings": {
-    "type": "!figma_rectangle",
+    "type": "!figma-rectangle",
     "style": "@_style",
     "dimensions": "@_dimensions",
-    "parentLayout": "@_parentLayout",
     "componentRefs": "#componentPropertyReferences"
   },
   "userData": null

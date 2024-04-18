@@ -1,7 +1,0 @@
-{
-  "type": "_parentLayout",
-  "mappings": {
-    "layoutMode": "#parent.layoutMode"
-  },
-  "userData": null
-}

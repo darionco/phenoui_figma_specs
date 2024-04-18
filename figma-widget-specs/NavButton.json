@@ -1,9 +1,11 @@
 {
   "type": "NavButton",
-  "mappings": {
-    "type": "!figma-nav-button",
-    "child": "@Frame"
-  },
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-nav-button"
+    }
+  ],
   "userData": {
     "data": {
       "type": "group",

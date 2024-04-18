@@ -3,7 +3,7 @@
   "mappings": {
     "type": "!figma-component",
     "variants": {
-      "default": "@Frame"
+      "default": "@_component_variant"
     },
     "componentType": "%nativeType($)",
     "defaultVariant": "!default"

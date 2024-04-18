@@ -5,8 +5,6 @@
     "opacity": "#opacity",
     "segments": "%getStyledTextSegments(![\"fontSize\",\"fontName\",\"fontWeight\",\"textDecoration\",\"textCase\",\"lineHeight\",\"letterSpacing\",\"fills\",\"listOptions\",\"indentation\",\"hyperlink\"])",
     "dimensions": "@_dimensions",
-    "isTextField": false,
-    "parentLayout": "@_parentLayout",
     "componentRefs": "#componentPropertyReferences",
     "textAutoResize": "#textAutoResize",
     "textTruncation": "#textTruncation",

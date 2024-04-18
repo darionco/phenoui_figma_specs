@@ -3,6 +3,7 @@
   "mappings": [
     "@Frame",
     {
+      "__info": "@__info",
       "variantProperties": "#variantProperties"
     }
   ],

@@ -51,6 +51,7 @@ async function main(args) {
             const files = await Deno.readDir(`${Deno.cwd()}/${entry.name}`);
             for await (let file of files) {
                 if (file.isFile) {
+                    console.log(`reading ${file.name}...`);
                     const data = await Deno.readTextFile(`${Deno.cwd()}/${entry.name}/${file.name}`);
                     const json = JSON.parse(data);
                     // json.type += '-dario';

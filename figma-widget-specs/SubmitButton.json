@@ -1,9 +1,11 @@
 {
   "type": "SubmitButton",
-  "mappings": {
-    "type": "!figma-submit-button",
-    "child": "@Frame"
-  },
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-submit-button"
+    }
+  ],
   "userData": {
     "id": {
       "type": "string",
