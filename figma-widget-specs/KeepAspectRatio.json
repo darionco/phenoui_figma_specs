@@ -1,8 +1,10 @@
 {
   "type": "KeepAspectRatio",
-  "mappings": {
-    "type": "!figma-keep-aspect-ratio",
-    "child": "@Frame"
-  },
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-keep-aspect-ratio"
+    }
+  ],
   "userData": null
 }
