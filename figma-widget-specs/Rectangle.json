@@ -3,6 +3,7 @@
   "mappings": {
     "type": "!figma-rectangle",
     "style": "@_style",
+    "effects": "#effects",
     "dimensions": "@_dimensions",
     "componentRefs": "#componentPropertyReferences"
   },
