@@ -1,8 +1,0 @@
-{
-  "type": "WorldSelectBadge",
-  "mappings": {
-    "type": "!mindora-world-select-badge",
-    "widgetType": "%nativeType($)"
-  },
-  "userData": null
-}
