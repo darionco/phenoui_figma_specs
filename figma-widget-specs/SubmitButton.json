@@ -14,13 +14,7 @@
     },
     "context": {
       "type": "group",
-      "default": [
-        {
-          "type": "string",
-          "default": "submit",
-          "description": "action"
-        }
-      ],
+      "default": null,
       "description": "Context data sent to the receiving form"
     }
   }
