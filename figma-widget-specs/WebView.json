@@ -1,10 +1,11 @@
 {
   "type": "WebView",
-  "mappings": {
-    "type": "!figma-web-view",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-web-view"
+    }
+  ],
   "userData": {
     "URL": {
       "type": "string",

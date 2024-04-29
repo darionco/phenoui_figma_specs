@@ -1,13 +1,13 @@
 {
   "type": "ImageSVG",
-  "mappings": {
-    "data": "%exportSVG($)",
-    "type": "!figma-image",
-    "format": "!svg",
-    "opacity": "#opacity",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "data": "%exportSVG($)",
+      "type": "!figma-image",
+      "format": "!svg"
+    }
+  ],
   "userData": {
     "method": {
       "type": "select",

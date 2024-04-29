@@ -1,14 +1,11 @@
 {
   "type": "Polygon",
-  "mappings": {
-    "data": "%exportSVG($)",
-    "type": "!figma-image",
-    "format": "!svg",
-    "opacity": "#opacity",
-    "dimensions": "@_dimensions",
-    "uploadMethod": "!embed",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@ImageSVG",
+    {
+      "uploadMethod": "!embed"
+    }
+  ],
   "userData": {
     "scaling": {
       "type": "select",

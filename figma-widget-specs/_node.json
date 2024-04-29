@@ -1,0 +1,11 @@
+{
+  "type": "_node",
+  "mappings": {
+    "info": "@__info",
+    "dimensions": "@_dimensions",
+    "effects": "#effects",
+    "opacity": "#opacity",
+    "componentRefs": "#componentPropertyReferences"
+  },
+  "userData": null
+}

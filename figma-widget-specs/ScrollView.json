@@ -1,10 +1,11 @@
 {
   "type": "ScrollView",
-  "mappings": {
-    "type": "!figma-scroll-view",
-    "child": "$children[0]",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-scroll-view",
+      "child": "$children[0]"
+    }
+  ],
   "userData": null
 }

@@ -1,13 +1,13 @@
 {
   "type": "ImageJPEG",
-  "mappings": {
-    "data": "%exportJPEG($)",
-    "type": "!figma-image",
-    "format": "!jpeg",
-    "opacity": "#opacity",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "data": "%exportJPEG($)",
+      "type": "!figma-image",
+      "format": "!jpeg"
+    }
+  ],
   "userData": {
     "method": {
       "type": "select",

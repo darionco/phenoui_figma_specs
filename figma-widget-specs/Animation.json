@@ -1,11 +1,11 @@
 {
   "type": "Animation",
-  "mappings": {
-    "type": "!figma-lottie-animation",
-    "opacity": "#opacity",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-lottie-animation"
+    }
+  ],
   "userData": {
     "loop": {
       "type": "boolean",

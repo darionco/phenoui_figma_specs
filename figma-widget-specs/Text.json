@@ -1,15 +1,15 @@
 {
   "type": "Text",
-  "mappings": {
-    "type": "!figma-text",
-    "opacity": "#opacity",
-    "segments": "%getStyledTextSegments(![\"fontSize\",\"fontName\",\"fontWeight\",\"textDecoration\",\"textCase\",\"lineHeight\",\"letterSpacing\",\"fills\",\"listOptions\",\"indentation\",\"hyperlink\"])",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences",
-    "textAutoResize": "#textAutoResize",
-    "textTruncation": "#textTruncation",
-    "textAlignVertical": "#textAlignVertical",
-    "textAlignHorizontal": "#textAlignHorizontal"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-text",
+      "segments": "%getStyledTextSegments(![\"fontSize\",\"fontName\",\"fontWeight\",\"textDecoration\",\"textCase\",\"lineHeight\",\"letterSpacing\",\"fills\",\"listOptions\",\"indentation\",\"hyperlink\"])",
+      "textAutoResize": "#textAutoResize",
+      "textTruncation": "#textTruncation",
+      "textAlignVertical": "#textAlignVertical",
+      "textAlignHorizontal": "#textAlignHorizontal"
+    }
+  ],
   "userData": null
 }

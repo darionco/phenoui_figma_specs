@@ -1,11 +1,12 @@
 {
   "type": "TileChild",
-  "mappings": {
-    "type": "!figma-tile-child",
-    "child": "$children[0]",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-tile-child",
+      "child": "$children[0]"
+    }
+  ],
   "userData": {
     "vertical": {
       "type": "boolean",

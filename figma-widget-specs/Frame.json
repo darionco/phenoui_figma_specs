@@ -1,13 +1,13 @@
 {
   "type": "Frame",
-  "mappings": {
-    "type": "!figma-frame",
-    "style": "@_style",
-    "layout": "@_layout",
-    "children": "$children",
-    "dimensions": "@_dimensions",
-    "effects": "#effects",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-frame",
+      "style": "@_style",
+      "layout": "@_layout",
+      "children": "$children"
+    }
+  ],
   "userData": null
 }

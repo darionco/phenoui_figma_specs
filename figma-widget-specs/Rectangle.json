@@ -1,11 +1,11 @@
 {
   "type": "Rectangle",
-  "mappings": {
-    "type": "!figma-rectangle",
-    "style": "@_style",
-    "effects": "#effects",
-    "dimensions": "@_dimensions",
-    "componentRefs": "#componentPropertyReferences"
-  },
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-rectangle",
+      "style": "@_style"
+    }
+  ],
   "userData": null
 }
