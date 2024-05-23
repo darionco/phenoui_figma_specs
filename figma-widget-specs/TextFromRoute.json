@@ -11,6 +11,11 @@
       "type": "string",
       "default": null,
       "description": "They key, in the route's data object, from which to get the text to display"
+    },
+    "selectable": {
+      "type": "boolean",
+      "default": false,
+      "description": "is this text selectable"
     }
   }
 }
