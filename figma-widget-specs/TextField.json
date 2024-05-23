@@ -16,6 +16,11 @@
       "type": "boolean",
       "default": false,
       "description": "is password"
+    },
+    "keyboardType": {
+      "type": "string",
+      "default": null,
+      "description": "keyboard type [TODO: make this a select]"
     }
   }
 }
