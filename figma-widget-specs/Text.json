@@ -11,5 +11,11 @@
       "textAlignHorizontal": "#textAlignHorizontal"
     }
   ],
-  "userData": null
+  "userData": {
+    "selectable": {
+      "type": "boolean",
+      "default": false,
+      "description": "should user be able to select the text within this node"
+    }
+  }
 }
