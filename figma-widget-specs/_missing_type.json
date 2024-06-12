@@ -1,0 +1,12 @@
+{
+  "type": "_missing_type",
+  "mappings": [
+  ],
+  "userData": {
+    "data": {
+      "type": "group",
+      "default": [],
+      "description": "Data to export along with the missing type."
+    }
+  }
+}
