@@ -17,10 +17,68 @@
       "default": false,
       "description": "is password"
     },
+    "isMultiline": {
+      "type": "boolean",
+      "default": false,
+      "description": "is multiline"
+    },
     "keyboardType": {
-      "type": "string",
-      "default": null,
-      "description": "keyboard type [TODO: make this a select]"
-    }
+      "type": "select",
+      "default": "text",
+      "options": [
+        {
+          "label": "Text",
+          "value": "text"
+        },
+        {
+          "label": "Multiline",
+          "value": "multiline"
+        },
+        {
+          "label": "Number",
+          "value": "number"
+        },
+        {
+          "label": "Phone",
+          "value": "phone"
+        },
+        {
+          "label": "Datetime",
+          "value": "datetime"
+        },
+        {
+          "label": "Email",
+          "value": "email"
+        },
+        {
+          "label": "URL",
+          "value": "url"
+        },
+        {
+          "label": "Visible Password",
+          "value": "visiblePassword"
+        },
+        {
+          "label": "Name",
+          "value": "name"
+        },
+        {
+          "label": "Street Address",
+          "value": "streetAddress"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ]
+    },
+    "__layout__": [
+      "id",
+      "keyboardType",
+      [
+        "isPasswordField",
+        "isMultiline"
+      ]
+    ]
   }
 }
