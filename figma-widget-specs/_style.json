@@ -1,10 +1,7 @@
 {
   "type": "_style",
   "mappings": {
-    "fill": {
-      "color": "%firstVisibleProperty(#fills, !color)",
-      "opacity": "%firstVisibleProperty(#fills, !opacity)"
-    },
+    "fill": "%firstVisibleEntry(#fills)",
     "border": {
       "type": "%firstVisibleProperty(#strokes, !type)",
       "color": "%firstVisibleProperty(#strokes, !color)",
