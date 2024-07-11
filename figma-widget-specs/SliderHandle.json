@@ -1,0 +1,10 @@
+{
+  "type": "SliderHandle",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-slider-handle"
+    }
+  ],
+  "userData": null
+}

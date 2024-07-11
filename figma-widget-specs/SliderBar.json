@@ -1,0 +1,10 @@
+{
+  "type": "SliderBar",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-slider-bar"
+    }
+  ],
+  "userData": null
+}

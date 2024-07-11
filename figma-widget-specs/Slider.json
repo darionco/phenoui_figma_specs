@@ -1,0 +1,37 @@
+{
+  "type": "Slider",
+  "mappings": [
+    "@FigmaComponentInstance",
+    {
+      "type": "!figma-slider",
+      "widgetType": "%nativeType($)"
+    }
+  ],
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": null,
+      "description": "id to use in forms"
+    },
+    "minValue": {
+      "type": "number",
+      "default": 0,
+      "description": "The minimum value of the slider"
+    },
+    "maxValue": {
+      "type": "number",
+      "default": 100,
+      "description": "The maximum value of the slider"
+    },
+    "increment": {
+      "type": "number",
+      "default": 1,
+      "description": "The increment of the slider"
+    },
+    "labels": {
+      "type": "group",
+      "default": null,
+      "description": "The labels to show on the slider per value, the keys should be the index of the label, starting at 0 and ending at the max value"
+    }
+  }
+}

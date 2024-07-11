@@ -1,0 +1,42 @@
+{
+  "type": "SliderTicks",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-slider-ticks"
+    }
+  ],
+  "userData": {
+    "behaviour": {
+      "type": "select",
+      "default": "repeatLast",
+      "options": [
+        {
+          "label": "Go through children and repeat last one",
+          "value": "repeatLast"
+        },
+        {
+          "label": "Cycle through children and repeat",
+          "value": "cycle"
+        },
+        {
+          "label": "Go through children and mirror order",
+          "value": "mirror"
+        },
+        {
+          "label": "Use first child for all ticks",
+          "value": "first"
+        },
+        {
+          "label": "Use last child for all ticks",
+          "value": "last"
+        },
+        {
+          "label": "No ticks",
+          "value": "none"
+        }
+      ],
+      "description": "How should the slider tick will render based on the children of the frame"
+    }
+  }
+}
