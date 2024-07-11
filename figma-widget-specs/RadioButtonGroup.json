@@ -1,0 +1,21 @@
+{
+  "type": "RadioButtonGroup",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-radio-button-group"
+    }
+  ],
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": null,
+      "description": "id to use in forms"
+    },
+    "initialValue": {
+      "type": "string",
+      "default": "",
+      "description": "id of the initial item to be selected (empty/null for none)"
+    }
+  }
+}
