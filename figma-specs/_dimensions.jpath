@@ -1,0 +1,23 @@
+{
+  class: '_dimensions',
+  description: 'The dimensions of the element.',
+  mappings: {
+    x: x,
+    y: y,
+    max: {
+      width: maxWidth,
+      height: maxHeight
+    },
+    min: {
+      width: minWidth,
+      height: minHeight
+    },
+    width: width,
+    height: height,
+    rotation: rotation,
+    widthMode: layoutSizingHorizontal,
+    heightMode: layoutSizingVertical,
+    constraints: constraints,
+    positioning: layoutPositioning
+  }
+}

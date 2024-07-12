@@ -1,0 +1,50 @@
+{
+  class: 'Animation',
+  description: 'Lottie animation container.',
+  mappings: inherit(@, '_node.mappings', {
+    type: 'figma-lottie-animation'
+  }),
+  properties: {
+    method: inherit(@, 'Image.properties.method', {
+      default: 'link',
+      description: 'The method used to save and link the animation to the export.'
+    }),
+    loop: {
+      type: 'boolean',
+      description: 'Whether the animation should loop or not.',
+      default: `true`
+    },
+    autoplay: {
+      type: 'boolean',
+      description: 'Whether the animation should start playing automatically.',
+      default: `true`
+    },
+    animation: {
+      type: 'union',
+      handler: 'lottie',
+      description: 'The lottie animation to use in the export.',
+      fields: {
+        from: {
+          type: 'number',
+          default: `null`,
+          description: 'The frame to start the animation from.'
+        },
+        to: {
+          type: 'number',
+          default: `null`,
+          description: 'The frame to end the animation at.'
+        },
+        data: {
+          type: 'lottie',
+          default: `null`,
+          description: 'The lottie animation data.'
+        }
+      }
+    }
+  },
+  layout: [
+    { type: 'row', content: ['method'] },
+    { type: 'row', content: ['loop', 'autoplay'] },
+    { type: 'row', content: ['animation'] }
+  ]
+}

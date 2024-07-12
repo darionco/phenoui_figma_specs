@@ -1,0 +1,9 @@
+{
+  "name": "phenoui_figma_specs",
+  "version": "0.0.1",
+  "description": "PhenoUI Mapping Specs from Figma",
+  "main": "index.js",
+  "repository": "https://github.com/PhenoML/phenoui_figma_specs.git",
+  "author": "Dario Segura <2651846+darionco@users.noreply.github.com>",
+  "license": "none"
+}

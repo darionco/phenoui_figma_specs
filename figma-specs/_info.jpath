@@ -1,0 +1,8 @@
+{
+  class: '_info',
+  description: 'Identifiable information about the node being exported.',
+  mappings: {
+    id: id,
+    name: name
+  }
+}

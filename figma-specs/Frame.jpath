@@ -1,0 +1,11 @@
+{
+  class: 'Frame',
+  description: 'A frame is a rectangular area on the screen. It can contain other frames, images, text, etc.',
+  mappings: inherit(@, '_node.mappings', {
+    type: 'figma-frame',
+    style: inherit(@, '_style.mappings'),
+    layout: inherit(@, '_layout.mappings'),
+    clipsContent: clipsContent,
+    children: children[*].export(@)
+  })
+}

@@ -1,0 +1,11 @@
+{
+  class: '_node',
+  description: 'A node is a basic building block of a Figma document. This is a base class that contains common properties for all nodes.',
+  mappings: {
+    info: inherit(@, '_info.mappings'),
+    dimensions: inherit(@, '_dimensions.mappings'),
+    effects: effects,
+    opacity: opacity,
+    componentRefs: componentPropertyReferences
+  }
+}

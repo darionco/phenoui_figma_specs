@@ -1,0 +1,23 @@
+{
+  class: '_style',
+  description: 'Style properties of various types of Figma nodes.',
+  mappings: {
+    fill: fills[?visible==`true`].{
+      color: color,
+      opacity: opacity
+    }[0],
+    border: strokes[?visible==`true`].{
+      type: type, 
+      color: color, 
+      opacity: opacity,
+      width: $.strokeWeight,
+      radius: {
+          bl: $.bottomLeftRadius,
+          br: $.bottomRightRadius,
+          tl: $.topLeftRadius,
+          tr: $.topRightRadius
+      }
+    }[0],
+    blendMode: blendMode
+  }
+}

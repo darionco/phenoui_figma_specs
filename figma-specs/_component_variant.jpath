@@ -1,0 +1,7 @@
+{
+  class: '_component_variant',
+  description: 'Describes a single variant of a figma component.',
+  mappings: inherit(@, 'Frame.mappings', {
+    variantProperties: variantProperties
+  })
+}

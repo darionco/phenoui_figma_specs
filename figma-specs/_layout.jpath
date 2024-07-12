@@ -1,0 +1,21 @@
+{
+  class: '_layout',
+  description: 'Mappings for the different layout properties of Figma frames.',
+  mappings: {
+    layoutGrow: layoutGrow,
+    layoutMode: layoutMode,
+    layoutWrap: layoutWrap,
+    paddingTop: paddingTop,
+    itemSpacing: itemSpacing,
+    layoutAlign: layoutAlign,
+    paddingLeft: paddingLeft,
+    paddingRight: paddingRight,
+    paddingBottom: paddingBottom,
+    layoutPositioning: layoutPositioning,
+    counterAxisSpacing: counterAxisSpacing,
+    counterAxisAlignItems: counterAxisAlignItems,
+    counterAxisSizingMode: counterAxisSizingMode,
+    primaryAxisAlignItems: primaryAxisAlignItems,
+    primaryAxisSizingMode: primaryAxisSizingMode
+  }
+}
