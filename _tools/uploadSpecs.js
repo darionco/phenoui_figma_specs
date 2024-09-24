@@ -2,7 +2,9 @@ import deepEql from "https://deno.land/x/deep_eql@v5.0.1/index.js";
 async function main(args) {
     // get the url and key args
     let url;
-    let key;
+    let user;
+    let pass;
+    let collection = 'pheno_ui_widget_specs';
 
     for (const arg of args) {
         const parts = arg.split('=');
@@ -11,8 +13,16 @@ async function main(args) {
                 url = parts[1];
                 break;
 
-            case '--key':
-                key = parts[1];
+            case '--user':
+                user = parts[1];
+                break;
+
+            case '--password':
+                pass = parts[1];
+                break;
+
+            case '--collection':
+                collection = parts[1];
                 break;
 
             default:
@@ -21,10 +31,29 @@ async function main(args) {
         }
     }
 
-    if (!url || !key) {
-        console.error('Missing required argument, usage: --url=<atrapi_url> --key=<api_key>');
+    if (!url || !user || !pass) {
+        console.error('Missing required argument, usage: --url=<pheno_ui_url> --user=<user> --password=<password> [--collection=<collection>]');
         return;
     }
+
+    // login to pocketbase
+    const loginUri = new URL('/api/admins/auth-with-password', url);
+    const loginResponse = await fetch(loginUri, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ identity: user, password: pass }),
+    });
+    const loginJson = await loginResponse.json();
+
+    if (loginResponse.status !== 200 || !loginJson.token) {
+        console.error(`failed to login to ${url} [${loginResponse.status} - ${loginResponse.statusText}]: ${(await loginResponse.json()).message}`);
+        return;
+    }
+
+    const key = loginJson.token;
 
     const entries = await Deno.readDir(Deno.cwd());
     for await (let entry of entries) {
@@ -32,8 +61,9 @@ async function main(args) {
             if (entry.name.startsWith('.') || entry.name.startsWith('_')) {
                 continue;
             }
+
             // test for the existence of the api endpoint
-            const endpoint = `/api/${entry.name}`;
+            const endpoint = `/api/collections/${entry.name}`;
             const uri = new URL(endpoint, url);
             console.log(`testing ${uri}...`);
             const response = await fetch(uri, {
@@ -55,8 +85,8 @@ async function main(args) {
                     const data = await Deno.readTextFile(`${Deno.cwd()}/${entry.name}/${file.name}`);
                     const json = JSON.parse(data);
                     // json.type += '-dario';
-                    const query = `filters[type][$eq]=${json.type}`;
-                    const existing = await fetch(`${url}${endpoint}?${query}`, {
+                    const query = `filter=(type='${json.type}')`;
+                    const existing = await fetch(`${url}${endpoint}/records?${query}`, {
                         headers: {
                             Authorization: `Bearer ${key}`
                         }
@@ -64,13 +94,13 @@ async function main(args) {
 
                     console.log(`checking for pre-existing ${json.type}...`);
                     const existingJson = await existing.json();
-                    const existingData = existingJson.data || [];
+                    const existingData = existingJson.items || [];
                     if (existingData.length > 0) {
                         console.log(`found ${json.type}, checking for changes in content...`);
                         const existingSpec =  {
-                            type: existingData[0].attributes.type,
-                            mappings: existingData[0].attributes.mappings,
-                            userData: existingData[0].attributes.userData,
+                            type: existingData[0].type,
+                            mappings: existingData[0].mappings,
+                            userData: existingData[0].userData,
                         }
 
                         if (deepEql(existingSpec, json)) {
@@ -80,8 +110,8 @@ async function main(args) {
                     }
 
                     console.log(`uploading ${json.type}...`);
-                    const method = existingData.length > 0 ? 'PUT' : 'POST';
-                    const uploadEndpoint = existingData.length > 0 ? `${endpoint}/${existingData[0].id}` : endpoint;
+                    const method = existingData.length > 0 ? 'PATCH' : 'POST';
+                    const uploadEndpoint = existingData.length > 0 ? `${endpoint}/records/${existingData[0].id}` : `${endpoint}/records`;
                     const uploadUri = new URL(uploadEndpoint, url);
                     const response = await fetch(uploadUri, {
                         method,
@@ -90,7 +120,7 @@ async function main(args) {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${key}`
                         },
-                        body: JSON.stringify({ data: json }),
+                        body: JSON.stringify(json),
                     });
 
                     if (response.status !== 200) {
