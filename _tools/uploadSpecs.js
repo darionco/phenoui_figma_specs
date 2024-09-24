@@ -4,7 +4,6 @@ async function main(args) {
     let url;
     let user;
     let pass;
-    let collection = 'pheno_ui_widget_specs';
 
     for (const arg of args) {
         const parts = arg.split('=');
@@ -21,10 +20,6 @@ async function main(args) {
                 pass = parts[1];
                 break;
 
-            case '--collection':
-                collection = parts[1];
-                break;
-
             default:
                 console.error(`unknown argument: ${parts[0]}`);
                 return;
@@ -32,7 +27,7 @@ async function main(args) {
     }
 
     if (!url || !user || !pass) {
-        console.error('Missing required argument, usage: --url=<pheno_ui_url> --user=<user> --password=<password> [--collection=<collection>]');
+        console.error('Missing required argument, usage: --url=<pheno_ui_url> --user=<user> --password=<password>');
         return;
     }
 
