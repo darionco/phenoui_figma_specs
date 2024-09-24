@@ -1,0 +1,6 @@
+{
+  "version": "3",
+  "remote": {
+    "https://deno.land/x/deep_eql@v5.0.1/index.js": "60e1547b99d4ae08df387067c2ac0a1b9ab42f212f0d8a11b8b0b61270d2b1c4"
+  }
+}
