@@ -58,8 +58,9 @@ async function main(args) {
             }
 
             // test for the existence of the api endpoint
-            const endpoint = `/api/collections/${entry.name}`;
-            const uri = new URL(endpoint, url);
+            // Future Dario: this is all wrong and should not be dependent on the folder name
+            const collectionEndpoint = `/api/collections/${entry.name}`;
+            const uri = new URL(collectionEndpoint, url);
             console.log(`testing ${uri}...`);
             const response = await fetch(uri, {
                 headers: {
@@ -72,6 +73,8 @@ async function main(args) {
                 continue;
             }
 
+            const endpoint = '/widget/spec'
+
             // read the files in the current folder
             const files = await Deno.readDir(`${Deno.cwd()}/${entry.name}`);
             for await (let file of files) {
@@ -80,22 +83,19 @@ async function main(args) {
                     const data = await Deno.readTextFile(`${Deno.cwd()}/${entry.name}/${file.name}`);
                     const json = JSON.parse(data);
                     // json.type += '-dario';
-                    const query = `filter=(type='${json.type}')`;
-                    const existing = await fetch(`${url}${endpoint}/records?${query}`, {
+                    console.log(`checking for pre-existing ${json.type}...`);
+                    const existing = await fetch(`${url}${endpoint}/type/${json.type}`, {
                         headers: {
                             Authorization: `Bearer ${key}`
                         }
                     });
-
-                    console.log(`checking for pre-existing ${json.type}...`);
                     const existingJson = await existing.json();
-                    const existingData = existingJson.items || [];
-                    if (existingData.length > 0) {
+                    if (existing.ok) {
                         console.log(`found ${json.type}, checking for changes in content...`);
                         const existingSpec =  {
-                            type: existingData[0].type,
-                            mappings: existingData[0].mappings,
-                            userData: existingData[0].userData,
+                            type: existingJson.type,
+                            mappings: existingJson.mappings,
+                            userData: existingJson.userData,
                         }
 
                         if (deepEql(existingSpec, json)) {
@@ -105,8 +105,8 @@ async function main(args) {
                     }
 
                     console.log(`uploading ${json.type}...`);
-                    const method = existingData.length > 0 ? 'PATCH' : 'POST';
-                    const uploadEndpoint = existingData.length > 0 ? `${endpoint}/records/${existingData[0].id}` : `${endpoint}/records`;
+                    const method = existing.ok ? 'PATCH' : 'POST';
+                    const uploadEndpoint = existing.ok ? `${endpoint}/id/${existingJson.id}` : `${endpoint}/new`;
                     const uploadUri = new URL(uploadEndpoint, url);
                     const response = await fetch(uploadUri, {
                         method,
