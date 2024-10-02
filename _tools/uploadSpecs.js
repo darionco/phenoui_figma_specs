@@ -73,7 +73,7 @@ async function main(args) {
                 continue;
             }
 
-            const endpoint = '/widget/spec'
+            const endpoint = '/phui/widget/spec'
 
             // read the files in the current folder
             const files = await Deno.readDir(`${Deno.cwd()}/${entry.name}`);
