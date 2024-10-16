@@ -106,7 +106,7 @@ async function main(args) {
 
                     console.log(`uploading ${json.type}...`);
                     const method = existing.ok ? 'PATCH' : 'POST';
-                    const uploadEndpoint = existing.ok ? `${endpoint}/id/${existingJson.id}` : `${endpoint}/new`;
+                    const uploadEndpoint = existing.ok ? `${endpoint}/id/${existingJson.id}` : `${endpoint}`;
                     const uploadUri = new URL(uploadEndpoint, url);
                     const response = await fetch(uploadUri, {
                         method,
