@@ -17,7 +17,7 @@ By default, strapi runs on http://localhost:1337, so you can use this URL to tes
 the following command in the root of the repository:
 
 ```bash
- deno run -A ./_tools/uploadSpecs.js --url=http://localhost:1337 --key=<your_strapi_api_token>
+ deno run -A ./_tools/uploadSpecs.js --url=http://localhost:1337 --user=<your_admin_user_name> --password=<your_admin_password>
 ```
 
 You need to replace `<your_strapi_api_token>` with the actual API token of your strapi server. You can
