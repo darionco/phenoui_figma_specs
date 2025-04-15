@@ -32,7 +32,7 @@ async function main(args) {
     }
 
     // login to pocketbase
-    const loginUri = new URL('/api/admins/auth-with-password', url);
+    const loginUri = new URL('/api/collections/_superusers/auth-with-password', url);
     const loginResponse = await fetch(loginUri, {
         method: 'POST',
         headers: {
@@ -70,10 +70,11 @@ async function main(args) {
 
             if (response.status !== 200) {
                 console.error(`failed to reach ${uri}`);
+                console.error(`response: ${response.status} - ${response.statusText}`);
                 continue;
             }
 
-            const endpoint = '/phui/widget/spec'
+            const endpoint = '/hipui/widget/spec'
 
             // read the files in the current folder
             const files = await Deno.readDir(`${Deno.cwd()}/${entry.name}`);
