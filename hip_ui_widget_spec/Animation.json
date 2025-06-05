@@ -58,7 +58,7 @@
       "handler": "lottie",
       "description": "Animation to load and play in the app"
     },
-    "__layout__": [
+    "@@layout@@": [
       "method",
       [
         "autoplay",

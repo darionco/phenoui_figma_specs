@@ -230,13 +230,13 @@ that the plugin will preset to the user in its panel. The values of the object a
 type of the property, its default value, and any additional information that is required to render the property
 in the plugin's panel.
 
-The special key `__layout__` can be used to define the layout of the properties in the plugin's panel. The value
-of the `__layout__` key is an array of strings that define the order of the properties in the panel. The strings
+The special key `@@layout@@` can be used to define the layout of the properties in the plugin's panel. The value
+of the `@@layout@@` key is an array of strings that define the order of the properties in the panel. The strings
 in the array are the keys of the properties in the `userData` object. For example, the following `userData`
 object will render the `name` property first, followed by the `age` property in the plugin's panel:
 ```json
 {
-  "__layout__": [
+  "@@layout@@": [
     "name", 
     "age"
   ],
@@ -252,12 +252,12 @@ object will render the `name` property first, followed by the `age` property in 
   }
 }
 ```
-each entry in the `__layout__` array represents a row in the plugin's panel, nested properties can be used to
+each entry in the `@@layout@@` array represents a row in the plugin's panel, nested properties can be used to
 define the layout of the properties in the same row. For example, the following `userData` object will render
 the `name` and `age` properties in the same row in the plugin's panel:
 ```json
 {
-  "__layout__": [
+  "@@layout@@": [
     ["name", "age"]
   ],
   "name": {
