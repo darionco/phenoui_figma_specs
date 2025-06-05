@@ -1,15 +1,20 @@
 import deepEql from "https://deno.land/x/deep_eql@v5.0.1/index.js";
 async function main(args) {
     // get the url and key args
-    let url;
-    let user;
-    let pass;
+    let API_KEY = Deno.env.get("FIREBASE_API_KEY");
+    let user = Deno.env.get("FIREBASE_USER");
+    let pass = Deno.env.get("FIREBASE_PASSWORD");
+    let projectId = Deno.env.get("FIREBASE_PROJECT_ID");
 
     for (const arg of args) {
         const parts = arg.split('=');
         switch (parts[0]) {
-            case '--url':
-                url = parts[1];
+            case '--key':
+                API_KEY = parts[1];
+                break;
+
+            case '--project':
+                projectId = parts[1];
                 break;
 
             case '--user':
@@ -26,29 +31,38 @@ async function main(args) {
         }
     }
 
-    if (!url || !user || !pass) {
+    if (!API_KEY || !projectId || !user || !pass) {
         console.error('Missing required argument, usage: --url=<pheno_ui_url> --user=<user> --password=<password>');
         return;
     }
 
-    // login to pocketbase
-    const loginUri = new URL('/api/collections/_superusers/auth-with-password', url);
+    // login to firebase
+    const loginUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
+    const loginUri = new URL(loginUrl);
+    const credentials = JSON.stringify({
+        'email': user,
+        'password': pass,
+        'returnSecureToken': true
+    });
+    const credentialsBinary = new TextEncoder().encode(credentials);
+    const blobData = new Blob([credentialsBinary], { type: "application/json" });
     const loginResponse = await fetch(loginUri, {
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ identity: user, password: pass }),
+        body: blobData
     });
     const loginJson = await loginResponse.json();
 
-    if (loginResponse.status !== 200 || !loginJson.token) {
-        console.error(`failed to login to ${url} [${loginResponse.status} - ${loginResponse.statusText}]: ${(await loginResponse.json()).message}`);
+    if (loginResponse.status !== 200 || !loginJson.idToken) {
+        console.error(`failed to login to ${loginUrl} [${loginResponse.status} - ${loginResponse.statusText}]: ${loginJson.message}`);
         return;
     }
 
-    const key = loginJson.token;
+    const token = loginJson.idToken;
+    const firebaseUrl = `https://firestore.googleapis.com`;
+    const basePath = `/v1/projects/${projectId}/databases/(default)/documents`;
 
     const entries = await Deno.readDir(Deno.cwd());
     for await (let entry of entries) {
@@ -59,12 +73,12 @@ async function main(args) {
 
             // test for the existence of the api endpoint
             // Future Dario: this is all wrong and should not be dependent on the folder name
-            const collectionEndpoint = `/api/collections/${entry.name}`;
-            const uri = new URL(collectionEndpoint, url);
+            const collectionEndpoint = `${basePath}/${entry.name}`;
+            const uri = new URL(collectionEndpoint, firebaseUrl);
             console.log(`testing ${uri}...`);
             const response = await fetch(uri, {
                 headers: {
-                    Authorization: `Bearer ${key}`
+                    Authorization: `Bearer ${token}`
                 }
             });
 
@@ -74,7 +88,7 @@ async function main(args) {
                 continue;
             }
 
-            const endpoint = '/hipui/widget/spec'
+            const endpoint = `/v1/projects/${projectId}/databases/(default)/documents/${entry.name}`
 
             // read the files in the current folder
             const files = await Deno.readDir(`${Deno.cwd()}/${entry.name}`);
@@ -85,46 +99,169 @@ async function main(args) {
                     const json = JSON.parse(data);
                     // json.type += '-dario';
                     console.log(`checking for pre-existing ${json.type}...`);
-                    const existing = await fetch(`${url}${endpoint}/type/${json.type}`, {
+                    const fileEndpoint = `${endpoint}/${json.type}`;
+                    const fileUri = new URL(fileEndpoint, firebaseUrl);
+                    const existing = await fetch(fileUri, {
                         headers: {
-                            Authorization: `Bearer ${key}`
+                            Authorization: `Bearer ${token}`
                         }
                     });
                     const existingJson = await existing.json();
                     if (existing.ok) {
                         console.log(`found ${json.type}, checking for changes in content...`);
+                        const decoded = decodeDocument(existingJson);
                         const existingSpec =  {
-                            type: existingJson.type,
-                            mappings: existingJson.mappings,
-                            userData: existingJson.userData,
+                            type: decoded.type,
+                            mappings: decoded.mappings,
+                            userData: decoded.userData,
                         }
 
-                        if (deepEql(existingSpec, json)) {
+                        const decodedJson = decodeValue(encodeValue(json));
+                        const fileSpec =  {
+                            type: decodedJson.type,
+                            mappings: decodedJson.mappings,
+                            userData: decodedJson.userData,
+                        }
+
+                        if (deepEql(existingSpec, fileSpec)) {
                             console.log(`content in server matches local version, skipping ${json.type}...`);
                             continue;
                         }
                     }
 
                     console.log(`uploading ${json.type}...`);
-                    const method = existing.ok ? 'PATCH' : 'POST';
-                    const uploadEndpoint = existing.ok ? `${endpoint}/id/${existingJson.id}` : `${endpoint}`;
-                    const uploadUri = new URL(uploadEndpoint, url);
+                    const method = 'PATCH';
+                    const uploadEndpoint = `${collectionEndpoint}/${json.type}`;
+                    const uploadUri = new URL(uploadEndpoint, firebaseUrl);
+                    console.log(`uploading to ${uploadUri} with method ${method}...`);
                     const response = await fetch(uploadUri, {
                         method,
+                        query: {
+                            'mask.fieldPaths': ['__name__'],
+                        },
                         headers: {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
-                            Authorization: `Bearer ${key}`
+                            Authorization: `Bearer ${token}`
                         },
-                        body: JSON.stringify(json),
+                        body: JSON.stringify(encodeValue(json).mapValue),
                     });
 
                     if (response.status !== 200) {
+                        console.log(await response.text());
                         throw `failed to upload ${json.type} [${response.status}]: ${response.statusText}`;
                     }
                 }
             }
         }
+    }
+}
+
+class DeleteField {}
+
+function encodeValue(value) {
+    if (value === undefined || value instanceof DeleteField) {
+        return undefined
+    }
+
+    if (value === null) {
+        return { nullValue: null }
+    }
+
+    if (typeof value === 'boolean') {
+        return { booleanValue: value }
+    }
+
+    if (typeof value === 'number') {
+        return Number.isInteger(value)
+            ? { integerValue: value }
+            : { doubleValue: value }
+    }
+
+    if (typeof value === 'string') {
+        return { stringValue: value }
+    }
+
+    if (value instanceof Date) {
+        return { timestampValue: value.toISOString() }
+    }
+
+    // if (value instanceof GeoPoint) {
+    //     return { geoPointValue: value.toJSON() }
+    // }
+
+    if (Array.isArray(value)) {
+        const values = value.map(encodeValue).filter(Boolean)
+        return { arrayValue: { values } }
+    }
+
+    if (typeof value === 'object') {
+        const entries = Object.entries(value)
+            .map(([key, value]) => {
+                if (key.startsWith('@@') && key.endsWith('@@')) {
+                    value = JSON.stringify(value);
+                }
+                const encodedValue = encodeValue(value)
+                return encodedValue ? [key, encodedValue] : undefined
+            })
+            .filter(Boolean)
+
+        return { mapValue: { fields: Object.fromEntries(entries) } }
+    }
+
+    throw new Error('Failed to encode value')
+}
+
+function decodeValue(value) {
+    if ('nullValue' in value) {
+        return null
+    }
+
+    if ('booleanValue' in value) {
+        return value.booleanValue
+    }
+
+    if ('integerValue' in value) {
+        return Number(value.integerValue)
+    }
+
+    if ('doubleValue' in value) {
+        return value.doubleValue
+    }
+
+    if ('stringValue' in value) {
+        return value.stringValue
+    }
+
+    if ('timestampValue' in value) {
+        return new Date(value.timestampValue)
+    }
+
+    if ('geoPointValue' in value) {
+        return new GeoPoint(
+            value.geoPointValue.latitude,
+            value.geoPointValue.longitude,
+        )
+    }
+
+    if ('arrayValue' in value) {
+        return value.arrayValue.values?.map(decodeValue) ?? []
+    }
+
+    if ('mapValue' in value) {
+        const entries = Object.entries(value.mapValue.fields ?? {}).map(
+            ([key, value]) => [key, decodeValue(value)],
+        )
+        return Object.fromEntries(entries)
+    }
+
+    throw new Error(`Failed to decode value: ${JSON.stringify(value, null, 2)}`)
+}
+
+function decodeDocument(document) {
+    return {
+        id: document.name.split('/').slice(-1)[0],
+        ...decodeValue({ mapValue: { fields: document.fields } }),
     }
 }
 
