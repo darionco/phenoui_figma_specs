@@ -1,0 +1,14 @@
+{
+  "type": "Frame",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-frame",
+      "style": "@_style",
+      "layout": "@_layout",
+      "clipsContent": "#clipsContent",
+      "children": "$children"
+    }
+  ],
+  "userData": null
+}

@@ -1,0 +1,20 @@
+{
+  "type": "_style",
+  "mappings": {
+    "fill": "%firstVisibleEntry(#fills)",
+    "border": {
+      "type": "%firstVisibleProperty(#strokes, !type)",
+      "color": "%firstVisibleProperty(#strokes, !color)",
+      "opacity": "%firstVisibleProperty(#strokes, !opacity)",
+      "width": "#strokeWeight",
+      "radius": {
+        "bl": "#bottomLeftRadius",
+        "br": "#bottomRightRadius",
+        "tl": "#topLeftRadius",
+        "tr": "#topRightRadius"
+      }
+    },
+    "blendMode": "#blendMode"
+  },
+  "userData": null
+}

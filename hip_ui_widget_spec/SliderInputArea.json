@@ -1,0 +1,10 @@
+{
+  "type": "SliderInputArea",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-slider-input-area"
+    }
+  ],
+  "userData": null
+}

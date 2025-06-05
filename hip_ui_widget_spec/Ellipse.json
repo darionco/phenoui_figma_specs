@@ -1,0 +1,11 @@
+{
+  "type": "Ellipse",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma_ellipse",
+      "style": "@_style"
+    }
+  ],
+  "userData": null
+}

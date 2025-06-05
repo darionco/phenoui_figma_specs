@@ -1,0 +1,21 @@
+{
+  "type": "Button",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-button"
+    }
+  ],
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": null,
+      "description": "id to use in notifications"
+    },
+    "context": {
+      "type": "group",
+      "default": [],
+      "description": "Context data sent with the notification"
+    }
+  }
+}

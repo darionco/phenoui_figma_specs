@@ -1,0 +1,11 @@
+{
+  "type": "_component_variant",
+  "mappings": [
+    "@Frame",
+    {
+      "__info": "@__info",
+      "variantProperties": "#variantProperties"
+    }
+  ],
+  "userData": null
+}

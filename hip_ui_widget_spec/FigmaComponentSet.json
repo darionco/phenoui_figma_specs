@@ -1,0 +1,10 @@
+{
+  "type": "FigmaComponentSet",
+  "mappings": {
+    "type": "!figma-component",
+    "variants": "%getVariants($, @_component_variant)",
+    "componentType": "%nativeType($)",
+    "defaultVariant": "#defaultVariant.name"
+  },
+  "userData": null
+}

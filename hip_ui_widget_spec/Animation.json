@@ -1,0 +1,70 @@
+{
+  "type": "Animation",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-lottie-animation"
+    }
+  ],
+  "userData": {
+    "loop": {
+      "type": "boolean",
+      "default": false,
+      "description": "Loop"
+    },
+    "method": {
+      "type": "select",
+      "default": "upload",
+      "options": [
+        {
+          "label": "Upload to server",
+          "value": "upload"
+        },
+        {
+          "label": "Link existing",
+          "value": "link"
+        },
+        {
+          "label": "Embed in export",
+          "value": "embed"
+        }
+      ],
+      "description": "Should the image be uploaded, linked or embedded"
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true,
+      "description": "Auto-play"
+    },
+    "animation": {
+      "type": "union",
+      "fields": {
+        "to": {
+          "type": "number",
+          "default": null,
+          "description": "Last frame to play of this animation"
+        },
+        "data": {
+          "type": "lottie",
+          "default": null,
+          "description": "The animation data to display"
+        },
+        "from": {
+          "type": "number",
+          "default": null,
+          "description": "Initial frame to play of this animation"
+        }
+      },
+      "handler": "lottie",
+      "description": "Animation to load and play in the app"
+    },
+    "__layout__": [
+      "method",
+      [
+        "autoplay",
+        "loop"
+      ],
+      "animation"
+    ]
+  }
+}

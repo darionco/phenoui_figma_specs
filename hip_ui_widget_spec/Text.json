@@ -1,0 +1,21 @@
+{
+  "type": "Text",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-text",
+      "segments": "%getStyledTextSegments(![\"fontSize\",\"fontName\",\"fontWeight\",\"textDecoration\",\"textCase\",\"lineHeight\",\"letterSpacing\",\"fills\",\"listOptions\",\"indentation\",\"hyperlink\"])",
+      "textAutoResize": "#textAutoResize",
+      "textTruncation": "#textTruncation",
+      "textAlignVertical": "#textAlignVertical",
+      "textAlignHorizontal": "#textAlignHorizontal"
+    }
+  ],
+  "userData": {
+    "selectable": {
+      "type": "boolean",
+      "default": false,
+      "description": "is this text selectable"
+    }
+  }
+}

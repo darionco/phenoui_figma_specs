@@ -1,0 +1,10 @@
+{
+  "type": "SafeArea",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-safe-area"
+    }
+  ],
+  "userData": null
+}

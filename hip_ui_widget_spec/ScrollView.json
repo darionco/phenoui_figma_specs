@@ -1,0 +1,27 @@
+{
+  "type": "ScrollView",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-scroll-view",
+      "child": "$children[0]"
+    }
+  ],
+  "userData": {
+    "direction": {
+      "type": "select",
+      "default": "vertical",
+      "options": [
+        {
+          "label": "Vertical",
+          "value": "vertical"
+        },
+        {
+          "label": "Horizontal",
+          "value": "horizontal"
+        }
+      ],
+      "description": "The direction in which this scroll view scrolls"
+    }
+  }
+}

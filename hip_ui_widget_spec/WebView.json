@@ -1,0 +1,21 @@
+{
+  "type": "WebView",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-web-view"
+    }
+  ],
+  "userData": {
+    "URL": {
+      "type": "string",
+      "default": "",
+      "description": "The URL to load in the web view"
+    },
+    "local": {
+      "type": "boolean",
+      "default": false,
+      "description": "Set to `true` when the URL is a path to a local file"
+    }
+  }
+}

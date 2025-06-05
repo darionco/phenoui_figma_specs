@@ -1,0 +1,22 @@
+{
+  "type": "TileChild",
+  "mappings": [
+    "@_node",
+    {
+      "type": "!figma-tile-child",
+      "child": "$children[0]"
+    }
+  ],
+  "userData": {
+    "vertical": {
+      "type": "boolean",
+      "default": true,
+      "description": "Tile the child vertically"
+    },
+    "horizontal": {
+      "type": "boolean",
+      "default": true,
+      "description": "Tile the child horizontally"
+    }
+  }
+}

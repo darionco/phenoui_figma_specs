@@ -1,0 +1,17 @@
+{
+  "type": "PropsFromRoute",
+  "mappings": [
+    "@FigmaComponentInstance",
+    {
+      "type": "!figma-props-from-route",
+      "widgetType": "%nativeType($)"
+    }
+  ],
+  "userData": {
+    "props": {
+      "type": "group",
+      "default": null,
+      "description": "Properties to read from the route data"
+    }
+  }
+}

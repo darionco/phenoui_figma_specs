@@ -1,0 +1,16 @@
+{
+  "type": "SliderLabel",
+  "mappings": [
+    "@Text",
+    {
+      "type": "!figma-slider-label"
+    }
+  ],
+  "userData": {
+    "labelFormat": {
+      "type": "string",
+      "default": "{percent}%",
+      "description": "The format of the label that shows the current value, it uses https://pub.dev/packages/format"
+    }
+  }
+}

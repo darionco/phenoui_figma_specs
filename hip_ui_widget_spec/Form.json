@@ -1,0 +1,21 @@
+{
+  "type": "Form",
+  "mappings": [
+    "@Frame",
+    {
+      "type": "!figma-form"
+    }
+  ],
+  "userData": {
+    "data": {
+      "type": "group",
+      "default": null,
+      "description": "Data to forward to the form flutter script"
+    },
+    "form": {
+      "type": "string",
+      "default": null,
+      "description": "The name of the flutter script that will handle this form"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "RandomText",
+  "mappings": [
+    "@FigmaComponentInstance",
+    {
+      "type": "!figma-random-text",
+      "widgetType": "%nativeType($)"
+    }
+  ],
+  "userData": {
+    "id": {
+      "type": "string",
+      "default": "default",
+      "description": "id of the string to load"
+    },
+    "checked": {
+      "type": "string",
+      "default": "variable",
+      "description": "The name of the variable that populates the string"
+    }
+  }
+}
