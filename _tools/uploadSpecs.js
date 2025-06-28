@@ -97,10 +97,18 @@ async function main(args) {
                     console.log(`reading ${file.name}...`);
                     const data = await Deno.readTextFile(`${Deno.cwd()}/${entry.name}/${file.name}`);
                     const json = JSON.parse(data);
+                    const decodedJson = decodeValue(encodeValue(json));
+                    const fileSpec =  {
+                        type: decodedJson.type,
+                        _lowercaseType: decodedJson.type.toLowerCase(),
+                        mappings: decodedJson.mappings,
+                        userData: decodedJson.userData,
+                    }
                     // json.type += '-dario';
                     console.log(`checking for pre-existing ${json.type}...`);
                     const fileEndpoint = `${endpoint}/${json.type}`;
                     const fileUri = new URL(fileEndpoint, firebaseUrl);
+                    console.log(`checking ${fileUri}...`);
                     const existing = await fetch(fileUri, {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -112,15 +120,9 @@ async function main(args) {
                         const decoded = decodeDocument(existingJson);
                         const existingSpec =  {
                             type: decoded.type,
+                            _lowercaseType: decoded._lowercaseType,
                             mappings: decoded.mappings,
                             userData: decoded.userData,
-                        }
-
-                        const decodedJson = decodeValue(encodeValue(json));
-                        const fileSpec =  {
-                            type: decodedJson.type,
-                            mappings: decodedJson.mappings,
-                            userData: decodedJson.userData,
                         }
 
                         if (deepEql(existingSpec, fileSpec)) {
@@ -144,7 +146,7 @@ async function main(args) {
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`
                         },
-                        body: JSON.stringify(encodeValue(json).mapValue),
+                        body: JSON.stringify(encodeValue(fileSpec).mapValue),
                     });
 
                     if (response.status !== 200) {
