@@ -12,6 +12,11 @@
       "default": null,
       "description": "id to use in notifications"
     },
+    "stringData": {
+      "type": "string",
+      "default": null,
+      "description": "a string of data to send with the notification"
+    },
     "context": {
       "type": "group",
       "default": [],
